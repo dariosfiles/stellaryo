@@ -1,1 +1,220 @@
-:)
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gasolinera Poyeto - Estación de servicio en Arcos de la Frontera, Cádiz.">
+  <title>Gasolinera Poyeto</title>
+  <style>
+    :root{
+      --red:#e21b23; --dark:#111827; --yellow:#ffd21c; --light:#f7f7f5;
+      --muted:#667085; --white:#fff; --green:#159957;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--dark);background:var(--light);line-height:1.6}
+    a{text-decoration:none;color:inherit}
+    .topbar{background:var(--dark);color:#fff;padding:9px 5%;font-size:.88rem;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .topbar span{opacity:.9}
+    nav{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid #eee;padding:15px 5%;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900;font-size:1.2rem}
+    .logo{width:44px;height:44px;border-radius:12px;background:var(--red);display:grid;place-items:center;color:#fff;font-size:1.35rem;box-shadow:0 6px 18px #e21b2333}
+    .navlinks{display:flex;gap:28px;font-weight:700;font-size:.95rem}
+    .navlinks a:hover{color:var(--red)}
+    .hero{min-height:600px;padding:80px 5%;display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;background:
+      radial-gradient(circle at 85% 25%,#ffd21c 0 9%,transparent 9.5%),
+      linear-gradient(135deg,#fff 0%,#fff7df 100%)}
+    .eyebrow{display:inline-block;background:#ffe8e9;color:var(--red);font-weight:900;padding:7px 13px;border-radius:999px;margin-bottom:18px;font-size:.85rem}
+    h1{font-size:clamp(3rem,7vw,6rem);line-height:.92;letter-spacing:-.06em;margin-bottom:25px}
+    h1 em{font-style:normal;color:var(--red)}
+    .hero p{font-size:1.15rem;color:#4b5563;max-width:620px;margin-bottom:30px}
+    .buttons{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 21px;border-radius:12px;font-weight:850;border:2px solid transparent;transition:.2s}
+    .btn-primary{background:var(--red);color:#fff}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 25px #e21b2340}
+    .btn-secondary{background:#fff;border-color:#ddd}.btn-secondary:hover{border-color:var(--dark)}
+    .station-card{background:var(--dark);color:#fff;border-radius:28px;padding:32px;min-height:360px;position:relative;overflow:hidden;box-shadow:0 25px 60px #11182728}
+    .station-card:before{content:"";position:absolute;width:280px;height:280px;border-radius:50%;background:var(--red);right:-100px;top:-90px}
+    .pump{position:relative;width:150px;height:230px;margin:15px auto 0;background:#f4f4f4;border-radius:18px 18px 12px 12px;border:8px solid #cfcfcf;color:#111}
+    .pump .screen{margin:28px 18px 12px;background:#202733;color:#8dffb7;border-radius:6px;padding:11px;font-weight:900;font-family:monospace}
+    .pump .stripe{height:13px;background:var(--red)}
+    .pump .nozzle{position:absolute;right:-36px;top:85px;width:40px;height:75px;border:7px solid #aaa;border-left:0;border-radius:0 18px 18px 0}
+    section{padding:90px 5%}
+    .section-head{max-width:700px;margin-bottom:40px}
+    .section-head h2{font-size:clamp(2rem,4vw,3.5rem);letter-spacing:-.04em;line-height:1;margin-bottom:12px}
+    .section-head p{color:var(--muted)}
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .feature{background:#fff;border:1px solid #e8e8e8;padding:28px;border-radius:20px}
+    .icon{font-size:2rem;margin-bottom:14px}.feature h3{margin-bottom:7px}.feature p{color:var(--muted);font-size:.95rem}
+    .info{background:#111827;color:#fff;display:grid;grid-template-columns:1fr 1fr;gap:50px}
+    .info .section-head p{color:#c5cad3}
+    .contact-card{background:#fff;color:var(--dark);border-radius:22px;padding:28px}
+    .row{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid #eee}.row:last-child{border:0}
+    .row b{min-width:95px}.row span{color:#596273}
+    .map{min-height:300px;border-radius:22px;background:linear-gradient(135deg,#dfe8d8,#f7f0cf);display:grid;place-items:center;color:#53604d;font-weight:900;font-size:1.3rem;border:1px solid #d5dacb}
+    .cta{padding:70px 5%;text-align:center;background:var(--yellow)}
+    .cta h2{font-size:clamp(2rem,5vw,4rem);letter-spacing:-.04em;line-height:1;margin-bottom:14px}
+    .cta p{margin:0 auto 25px;max-width:650px}
+    footer{background:#0b0f16;color:#aeb5c1;padding:35px 5%;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    footer strong{color:#fff}
+    @media(max-width:850px){
+      .hero,.info{grid-template-columns:1fr}.hero{padding-top:55px}
+      .features{grid-template-columns:1fr}
+      .navlinks{display:none}
+    }
+
+  
+    .menu-section{background:#fff8e6}
+    .menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .menu-card{background:#fff;border:1px solid #eadfca;border-radius:22px;padding:26px;box-shadow:0 12px 30px rgba(17,24,39,.07);transition:.2s}
+    .menu-card:hover{transform:translateY(-4px);box-shadow:0 18px 35px rgba(17,24,39,.11)}
+    .menu-number{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--red);color:#fff;font-weight:900;margin-bottom:18px}
+    .menu-card h3{font-size:1.25rem;line-height:1.2;margin-bottom:8px}
+    .menu-card p{color:var(--muted);font-size:.92rem}
+    @media(max-width:1050px){.menu-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:600px){.menu-grid{grid-template-columns:1fr}}
+
+  
+    .team-section{background:#f3f4f6}
+    .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .team-card{background:#fff;border-radius:24px;padding:34px;text-align:center;border:1px solid #e6e7ea;box-shadow:0 12px 30px rgba(17,24,39,.07)}
+    .team-avatar{width:92px;height:92px;margin:0 auto 18px;border-radius:50%;display:grid;place-items:center;background:var(--yellow);font-size:2.3rem;font-weight:900;color:var(--dark)}
+    .team-card h3{font-size:1.45rem}
+    .team-card p{color:var(--muted);margin-top:4px}
+    @media(max-width:700px){.team-grid{grid-template-columns:1fr}}
+
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <span>📍 Arcos de la Frontera, Cádiz</span>
+    <span>🚗 Tu parada en la A-382a</span>
+  </div>
+
+  <nav>
+    <a class="brand" href="#"><span class="logo">⛽</span> Gasolinera Poyeto</a>
+    <div class="navlinks">
+      <a href="#menu">Menú</a>
+      <a href="#ubicacion">Ubicación</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div>
+        <span class="eyebrow">ESTACIÓN DE SERVICIO</span>
+        <h1>Gasolinera<br><em>Poyeto</em></h1>
+        <p>Tu parada de confianza en Arcos de la Frontera. Combustible, atención cercana y todo lo que necesitas para continuar tu viaje.</p>
+        <div class="buttons">
+          <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Gasolinera%20Poyeto%2C%20Arcos%20de%20la%20Frontera" target="_blank" rel="noopener">📍 Cómo llegar</a>
+          <a class="btn btn-secondary" href="#contacto">Ver ubicación</a>
+        </div>
+      </div>
+
+      <div class="station-card">
+        <div style="position:relative;z-index:2;text-align:center;font-weight:900;letter-spacing:.08em">POYETO</div>
+        <div class="pump">
+          <div class="screen">POYETO<br><small>LISTO PARA TU VIAJE</small></div>
+          <div class="stripe"></div>
+          <div style="text-align:center;padding:25px 5px;font-weight:900">⛽</div>
+          <div class="nozzle"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section" id="menu">
+      <div class="section-head">
+        <span class="eyebrow">PARA EMPEZAR EL DÍA</span>
+        <h2>Menú De Desayuno</h2>
+        <p>Disfruta de nuestras especialidades antes de continuar tu ruta.</p>
+      </div>
+      <div class="menu-grid">
+        <article class="menu-card">
+          <span class="menu-number">01</span>
+          <h3>Patatas Poya deliciosas</h3>
+          <p>Una opción sabrosa para comenzar la mañana con energía.</p>
+        </article>
+        <article class="menu-card">
+          <span class="menu-number">02</span>
+          <h3>Hamburgesa Venoza</h3>
+          <p>Una hamburguesa especial de la casa.</p>
+        </article>
+        <article class="menu-card">
+          <span class="menu-number">03</span>
+          <h3>Pasta Penne con salsa blanca</h3>
+          <p>Penne acompañado de una cremosa salsa blanca.</p>
+        </article>
+        <article class="menu-card">
+          <span class="menu-number">04</span>
+          <h3>Salchicha Fimozi</h3>
+          <p>Una especialidad diferente para tu desayuno.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="info" id="ubicacion">
+      <div>
+        <div class="section-head">
+          <span class="eyebrow">DÓNDE ESTAMOS</span>
+          <h2>Encuéntranos en Arcos.</h2>
+          <p>Abre la ubicación en Google Maps para obtener indicaciones desde tu posición.</p>
+        </div>
+        <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Gasolinera%20Poyeto%2C%2077%20A-382a%2C%20Arcos%20de%20la%20Frontera" target="_blank" rel="noopener">Abrir en Google Maps →</a>
+      </div>
+      <div class="contact-card" id="contacto">
+        <h3 style="font-size:1.5rem;margin-bottom:8px">Información</h3>
+        <div class="row"><b>Dirección</b><span>77 A-382a, Arcos de la Frontera, Cádiz</span></div>
+        <div class="row"><b>Localidad</b><span>Arcos de la Frontera</span></div>
+        <div class="row"><b>Provincia</b><span>Cádiz, Andalucía</span></div>
+      </div>
+    </section>
+
+    <div class="cta">
+      <h2>¿s vemos en Poyeto?</h2>
+      <p>Guarda esta parada para tu próxima ruta por Arcos de la Frontera.</p>
+      <a class="btn btn-secondary" href="https://www.google.com/maps/search/?api=1&query=Gasolinera%20Poyeto%2C%2077%20A-382a%2C%20Arcos%20de%20la%20Frontera" target="_blank" rel="noopener">📍 Ir a Gasolinera Poyeto</a>
+    </div>
+  </main>
+        <h2 id="age-title"></h2>
+        <p></p>
+        <div class="age-buttons">
+          <button class="age-yes" id="age-yes"></button>
+          <button class="age-no" id="age-no"></button>
+        </div>
+      </div>
+    </div>
+
+
+    <section class="team-section" id="equipo">
+      <div class="section-head">
+        <span class="eyebrow">QUIÉNES SOMOS</span>
+        <h2>CONOCE AL EQUIPO</h2>
+        <p>Las personas que hacen que Gasolinera Poyeto sea una parada especial.</p>
+      </div>
+      <div class="team-grid">
+        <article class="team-card">
+          <div class="team-avatar">C</div>
+          <h3>Churumbel</h3>
+          <p>Equipo Poyeto</p>
+        </article>
+        <article class="team-card">
+          <div class="team-avatar">B</div>
+          <h3>Boti</h3>
+          <p>Equipo Poyeto</p>
+        </article>
+        <article class="team-card">
+          <div class="team-avatar">CH</div>
+          <h3>Chori</h3>
+          <p>Equipo Poyeto</p>
+        </article>
+      </div>
+    </section>
+
+  <footer>
+    <div><strong>Gasolinera Poyeto</strong><br>Arcos de la Frontera, Cádiz</div>
+    <div>© 2026 Gasolinera Poyeto</div>
+  </footer>
+
+</body>
+</html>
